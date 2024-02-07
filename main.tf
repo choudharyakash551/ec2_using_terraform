@@ -17,7 +17,7 @@ resource "aws_instance" "ec2_instance" {
   instance_type = var.aws_instance_type
   ami = data.aws_ami.ec2-ami.id
   key_name = var.aws_access_keys
-  security_groups = aws_security_group.instance_security_group
+  security_groups = [aws_security_group.instance_security_group.name]
 }
 
 data "aws_ami" "ec2-ami" {
@@ -33,5 +33,5 @@ data "aws_ami" "ec2-ami" {
     values = ["hvm"]
   }
 
-  owners = [""]
+  owners = ["amazon"]
 }
